@@ -74,7 +74,7 @@ int main(void) {
     }
 
     auto inv_fg_diff = fg_diff.reverse_func();
-    inv_fg_diff = inv_fg_diff.point_range(0, 5);
+    inv_fg_diff = inv_fg_diff.point_range(0, 4);
 
     auto inv_fg_diff_fn = newton_polinom(inv_fg_diff);
     if (!inv_fg_diff_fn) {
