@@ -6,7 +6,7 @@ void CubeFunc::b_calc(std::pair<double, double> ys, std::pair<double, double> cs
     b = (ys.second - ys.first) / h - (h * (cs.second + 2 * cs.first) / 3);
 }
 void CubeFunc::c_calc(double next_c, double ksi, double teta) {
-    c = ksi * next_c + teta; 
+    c = ksi * next_c + teta;
 }
 void CubeFunc::d_calc(std::pair<double, double> cs, double h) {
     d = (cs.second - cs.first) / (3 * h);
@@ -115,7 +115,7 @@ void Splines::c_coefs_calc(const PointsTable &table, std::pair<double, double> b
 
         tetas[i] = teta_calc(hs, dys, ksis[i - 1], tetas[i - 1]);
     }
-    coefs[coefs.size() - 1].c = tetas[tetas.size() - 1] 
+    coefs[coefs.size() - 1].c = tetas[tetas.size() - 1]
                                 + (bords.second / 2) * ksis[ksis.size() - 1];
 
     for (std::size_t i = cnt - 1; i > 0; --i)

@@ -11,6 +11,7 @@
 
 extern "C" {
     #include "ctype.h"
+    #include "string.h"
 }
 
 PointsTable build_table(std::function<double(double)> func, std::pair<double, double> bords, double step);

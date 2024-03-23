@@ -73,33 +73,46 @@ PointsTable PointsTable::slice(std::size_t start, std::size_t end) const {
 }
 
 PointsTable PointsTable::point_range(double x, std::size_t len) const {
-    std::vector<std::size_t> indexes;
+    // ! Старая реализация
+    // std::vector<std::size_t> indexes;
 
-    auto table_x = get_xs();
-    std::vector<double> distances;
-    distances.reserve(table_x.size());
+    // auto table_x = get_xs();
+    // std::vector<double> distances;
+    // distances.reserve(table_x.size());
 
-    for (const auto& x_value : table_x)
-        distances.push_back(std::abs(x_value - x));
+    // for (const auto& x_value : table_x)
+    //     distances.push_back(std::abs(x_value - x));
 
-    for (std::size_t i = 0; i < distances.size(); indexes.push_back(i++));
+    // for (std::size_t i = 0; i < distances.size(); indexes.push_back(i++));
 
-    // Сортируем вектор индексов на основе расстояний
-    std::sort(indexes.begin(), indexes.end(), [&](std::size_t i, std::size_t j) {
-        return (distances[i] != distances[j]) ? distances[i] < distances[j] : i < j;
-    });
+    // // Сортируем вектор индексов на основе расстояний
+    // std::sort(indexes.begin(), indexes.end(), [&](std::size_t i, std::size_t j) {
+    //     return (distances[i] != distances[j]) ? distances[i] < distances[j] : i < j;
+    // });
 
 
-    std::size_t cnt = 0;
-    std::vector<std::size_t> nearest_indexes;
-    for (std::size_t i = 0; cnt <= len && i < indexes.size(); ++i) {
-        nearest_indexes.push_back(indexes[i]);
-        cnt++;
+    // std::size_t cnt = 0;
+    // std::vector<std::size_t> nearest_indexes;
+    // for (std::size_t i = 0; cnt <= len && i < indexes.size(); ++i) {
+    //     nearest_indexes.push_back(indexes[i]);
+    //     cnt++;
+    // }
+    
+    // * Новый подход
+    PointsTable result;
+
+    std::size_t index;
+    for (index = 0; data[index].x < x; ++index);
+
+    result.push_back(data[index ? --index : index]);
+    ssize_t left = 0, right = 0;
+    while (result.size() <= len && std::size_t(left) <= data.size() && std::size_t(right) <= data.size()) {
+        if (index + (++right) < data.size())
+            result.push_back(data[index + right]);
+        if (result.size() <= len && ssize_t(index) - (++left) >= 0)
+            result.push_back(data[index - left]);
     }
     
-    PointsTable result;
-    for (const auto& index : nearest_indexes)
-        result.push_back(data[index]);
     result.sort();
     return result;
 }
