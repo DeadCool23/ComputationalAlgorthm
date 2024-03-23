@@ -89,8 +89,6 @@ int main(int argc, char **argv) {
             "AllBoardSpline",
         };
         graphs_draw(tables, lbls);
-        for (std::size_t i = 0; i < tables.size(); ++i)
-            graph_draw(tables[i], lbls[i], false);
     } else if (!step) {
         print_errs(err = table.is_incorrect());
     }
