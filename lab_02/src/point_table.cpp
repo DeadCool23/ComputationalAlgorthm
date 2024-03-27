@@ -102,7 +102,7 @@ PointsTable PointsTable::point_range(double x, std::size_t len) const {
     PointsTable result;
 
     std::size_t index;
-    for (index = 0; data[index].x < x; ++index);
+    for (index = 0; index < data.size() && data[index].x < x; ++index);
 
     result.push_back(data[index ? --index : index]);
     ssize_t left = 0, right = 0;

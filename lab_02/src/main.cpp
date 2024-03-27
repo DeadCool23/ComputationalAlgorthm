@@ -97,11 +97,13 @@ int main(int argc, char **argv) {
 }
 
 PointsTable build_table(std::function<double(double)> func, std::pair<double, double> bords, double step) {
+#define EPS 1e-10
     PointsTable new_table;
-    for (double x = bords.first; x <= bords.second; x += step)
+    for (double x = bords.first; x <= bords.second + EPS; x += step)
         new_table.push_back(Point({
             .x = x,
             .y = func(x)
         }));
     return new_table;
+#undef EPS
 }
