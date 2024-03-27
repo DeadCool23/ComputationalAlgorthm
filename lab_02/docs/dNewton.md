@@ -48,5 +48,5 @@ f_n^{(m)}(x) = m! \cdot \sum_{i_1 = 1}^{n} (\sum_{i_2 = i_1 + 1}^{n} \ldots ( \s
 <br>
 
 \[Следовательно: \\
-P_n^{(m)}(x) = m!  \cdot c_{m + 1} + c_{m + 2} f_{m + 1}'(x) + \ldots + c_n f_{n-1}'(x)
+P_n^{(m)}(x) = m!  \cdot c_{m + 1} + c_{m + 2} f_{m + 1}^{(m)}(x) + \ldots + c_n f_{n-1}^{(m)}(x)
 \]
