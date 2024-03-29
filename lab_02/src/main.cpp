@@ -41,6 +41,7 @@ int main(int argc, char **argv) {
     auto nzSpline = Splines(table, std::pair(bords[1], 0));
     auto nnSpline = Splines(table, std::pair(bords[1], bords[2]));
 
+    std::cout << zzSpline << std::endl;
     double x = 0;
     std::cout << "Input x: ";
     if (!(std::cin >> x)) {
@@ -88,7 +89,7 @@ int main(int argc, char **argv) {
             "StartBoadSpline",
             "AllBoardSpline",
         };
-        graphs_draw(tables, lbls);
+        graphs_draw(tables, lbls, false);
     } else if (!step) {
         print_errs(err = table.is_incorrect());
     }

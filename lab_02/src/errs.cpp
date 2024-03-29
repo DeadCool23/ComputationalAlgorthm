@@ -1,11 +1,11 @@
-#include "errs.h"
+#include "errs.H"
 
 #include <iostream>
 
 static std::string error_message[] = {
     "",
-    "Incoorect input",
-    "Incoorect args",
+    "Incorrect input",
+    "Incorrect args",
     "Incorrect file",
     "Imposible calculations",
     "Lack of functionality",
