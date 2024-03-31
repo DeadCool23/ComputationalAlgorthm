@@ -6,7 +6,7 @@
 
 #include "point_table.hpp"
 
-struct CubeFunc {
+struct Spline {
     double a, b, c, d;
 
     // 1. a, 1. c, 2. [b, d]
@@ -16,14 +16,13 @@ struct CubeFunc {
     void d_calc(std::pair<double, double> cs, double h);
 
     double operator()(double x, double x0 = 0) const;
-    friend std::ostream& operator<<(std::ostream& os, const CubeFunc& func);
+    friend std::ostream& operator<<(std::ostream& os, const Spline& func);
 };
 
 class Splines {
     std::size_t cnt;
     std::vector<double> _x;
-    std::pair<double, double> bords;
-    std::vector<CubeFunc> coefs;
+    std::vector<Spline> splines;
 
 public:
     Splines(std::ifstream &file, std::pair<double, double> bords = std::pair(0 ,0));
@@ -35,7 +34,7 @@ private:
     void a_coefs_calc(std::vector<double> _y);
     void b_coefs_calc(const PointsTable &table, std::pair<double, double> bords);
     void c_coefs_calc(const PointsTable &table, std::pair<double, double> bords);
-    void d_coefs_calc(void);
+    void d_coefs_calc(std::pair<double, double> bords);
 
     void coefs_calc(const PointsTable &table, std::pair<double, double> bords);
 };
