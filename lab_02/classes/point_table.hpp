@@ -1,7 +1,7 @@
 #ifndef __POINT_TABLE_HPP__
 #define __POINT_TABLE_HPP__
 
-#include "errs.h"
+#include "errs.H"
 #include <string>
 #include <vector>
 #include <sstream>
