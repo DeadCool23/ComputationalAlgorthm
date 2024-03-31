@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <iostream>
 
-#include "errs.h"
+#include "errs.H"
 #include "graph.hpp"
 #include "newton.hpp"
 #include "splines.hpp"
