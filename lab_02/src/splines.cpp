@@ -46,7 +46,7 @@ Splines::Splines(const PointsTable  &table, std::pair<double, double> bords) {
     _x = table.get_xs();
 
     cnt = table.size() - 1;
-    coefs_calc(table, bords);
+    splines_calc(table, bords);
 }
 
 double Splines::operator()(double x) const {
@@ -143,7 +143,7 @@ void Splines::d_coefs_calc(std::pair<double, double> bords) {
     }
 }
 
-void Splines::coefs_calc(const PointsTable &table, std::pair<double, double> bords) {
+void Splines::splines_calc(const PointsTable &table, std::pair<double, double> bords) {
     splines.resize(cnt);
     a_coefs_calc(table.get_ys());
     c_coefs_calc(table, bords);

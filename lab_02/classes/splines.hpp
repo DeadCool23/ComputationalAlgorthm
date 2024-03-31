@@ -36,7 +36,7 @@ private:
     void c_coefs_calc(const PointsTable &table, std::pair<double, double> bords);
     void d_coefs_calc(std::pair<double, double> bords);
 
-    void coefs_calc(const PointsTable &table, std::pair<double, double> bords);
+    void splines_calc(const PointsTable &table, std::pair<double, double> bords);
 };
 
 #endif // __SPLINES_HPP__
