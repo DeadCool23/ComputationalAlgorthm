@@ -1,6 +1,7 @@
 #include "graph.hpp"
 #include "mult_interpolation.hpp"
 
+#include <time.h>
 #include <fstream>
 #include <iostream>
 
@@ -47,6 +48,12 @@ errs_t graph_draw(const Points4D &table, const std::vector<size_t> &ranges, std:
     fprintf(gnuplotPipe, "\n");
     fflush(gnuplotPipe);
 
+    char is_exit = 0;
+    std::cout << "<Press any key to exit>";
+
+    while (!is_exit)
+        std::cin >> is_exit;
+    
     pclose(gnuplotPipe);
     if (del)
         std::remove(data_file.c_str());
