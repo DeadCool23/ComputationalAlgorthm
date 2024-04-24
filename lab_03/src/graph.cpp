@@ -9,6 +9,14 @@
 
 #define NEWTON_3_DEGREE {3, 3, 3}
 
+static void proc_end(void) {
+    char is_exit = 0;
+    std::cout << "<Press any key to exit>";
+
+    while (!is_exit)
+        std::cin >> is_exit;
+}
+
 errs_t graph_draw(const Points4D &table, const std::vector<size_t> &ranges, std::string label, bool del) {
 #define EPS 1e-8
     if (ranges.size() != 3) throw std::invalid_argument("Number of intervals must be 3");
@@ -47,12 +55,8 @@ errs_t graph_draw(const Points4D &table, const std::vector<size_t> &ranges, std:
 
     fprintf(gnuplotPipe, "\n");
     fflush(gnuplotPipe);
-
-    char is_exit = 0;
-    std::cout << "<Press any key to exit>";
-
-    while (!is_exit)
-        std::cin >> is_exit;
+    
+    proc_end();
     
     pclose(gnuplotPipe);
     if (del)

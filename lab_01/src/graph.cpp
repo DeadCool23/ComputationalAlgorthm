@@ -23,7 +23,7 @@ errs_t graph_draw(std::function<double(double)> func, std::pair<double, double> 
 
     fprintf(gnuplotPipe, "plot '"); fprintf(gnuplotPipe, data_file.c_str()); fprintf(gnuplotPipe, "' title 'f(x)' w lp\n");
     fflush(gnuplotPipe);
-
+    
     pclose(gnuplotPipe);
     int res = del ? std::remove(data_file.c_str()) : 0;
     return res ? ERR_CALC : OK;
@@ -54,7 +54,7 @@ errs_t graphs_draw(std::pair<std::function<double(double)>, std::function<double
     fprintf(gnuplotPipe, "plot '"); fprintf(gnuplotPipe, data_files.first.c_str()); fprintf(gnuplotPipe, "' title 'f(x)' w lp");
     fprintf(gnuplotPipe, ", '"); fprintf(gnuplotPipe, data_files.second.c_str()); fprintf(gnuplotPipe, "' title 'g(x)' w lp\n");
     fflush(gnuplotPipe);
-
+    
     pclose(gnuplotPipe);
     int res = del ? std::remove(data_files.first.c_str()) : 0;
     res = del ? (!res ? std::remove(data_files.second.c_str()) : res) : 0;
