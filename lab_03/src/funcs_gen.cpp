@@ -8,6 +8,6 @@ double test_func1(double x, double y, double z) {
 }
 double test_func2(double x, double y, double z) { return x * y * z; }
 double test_func3(double x, double y, double z) { return x - y + z; }
-double test_func4(double x, double y, double z) { return exp(2 * x - y) * z; }
+double test_func4(double x, double y, double z) { return exp(2 * x - y) * z * z; }
 
 double square_func(double x, double y, double z) { return x * x + y * y + z * z; }

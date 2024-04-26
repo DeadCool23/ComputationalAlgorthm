@@ -13,7 +13,9 @@
 
 #define INTERVALS std::vector<std::pair<Interval, double>>{ X_PARAMS, Y_PARAMS, Z_PARAMS }
 
-#define GEN_FUNC test_func2
+#define GEN_FUNC test_func4
+
+void get_ans(char &ans);
 
 int main(void) {
     auto table4d = Points4D(INTERVALS, GEN_FUNC);
@@ -43,7 +45,10 @@ int main(void) {
 
     std::cout << std::endl;
 
-    table4d.print_table();
+    char is_print;
+    std::cout << "Print table? [Y/N]: ";
+    get_ans(is_print);
+    if (is_print == 'y') table4d.print_table();
 
     std::cout << std::endl;
     std::string func = "f(x, y, z)";
@@ -56,17 +61,25 @@ int main(void) {
     std::cout << "Mixed result: " << std::endl;
     std::cout << func << " = " << mult_interpolation(table4d, point, ndegs, MIXED) << std::endl;
 
-    char is_drawing = 'y';
+    std::cout << "Real result: " << std::endl;
+    std::cout << func << " = " << GEN_FUNC(point.x, point.y, point.z) << std::endl;
+
+    char is_drawing;
     std::cout << std::endl << "Draw graphics? [Y/N]: ";
-    if (std::cin >> is_drawing) {
-        is_drawing = std::tolower(is_drawing);
-        if (is_drawing == 'n') is_drawing = 'n';
-        else is_drawing = 'y';
-    } else {
-        is_drawing = 'y';
-    }
+    get_ans(is_drawing);
+    
 
     if (is_drawing == 'y') graph_draw(table4d, GRAPH_RANGES, "Func4D", false);
 
     return ~0xFFFFFFFF;
+}
+
+void get_ans(char &ans) {
+    if (std::cin >> ans) {
+        ans = std::tolower(ans);
+        if (ans == 'n') ans = 'n';
+        else ans = 'y';
+    } else {
+        ans = 'y';
+    }
 }
